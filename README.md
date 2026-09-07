@@ -1,111 +1,72 @@
-# G42_grafos_PA26.2
+# UrbanRoutingDelivery
 
-# UrbanRoutingDelivery - Sistema de Roteamento Logístico do DF
+Número da Lista: 1<br>
+Conteúdo da Disciplina: Grafos<br>
 
+## Alunos
 
+| Matrícula | Aluno |
+| -- | -- |
+| 231029340 | Thiago Viriato Accioly |
+| 231039140 | Marjorie Mitzi Cavalcante Rodrigues |
 
-**Disciplina:** Projeto de Algoritmos (PA) - Módulo 1 (Grafos)  
+## Sobre
 
-**Instituição:** Universidade de Brasília (UnB)  
+O **UrbanRoutingDelivery** é um sistema distribuído de roteamento logístico que calcula a menor distância entre pontos de uma malha urbana baseada no Distrito Federal. O objetivo do projeto é demonstrar a aplicação prática da Teoria dos Grafos utilizando o **Algoritmo de Dijkstra**.
 
-**Dupla:** Thiago Accioly & Marjorie
+A estrutura de dados principal implementada no núcleo do sistema adota os seguintes preceitos:
+* **Grafo Não-Direcionado (Undirected):** As conexões (arestas) representam vias de mão dupla entre os locais.
+* **Grafo Ponderado (Weighted):** Cada aresta possui um peso numérico correspondente à distância em quilômetros.
+* **Grafo Desconexo (Disconnected):** O sistema lida com vértices inalcançáveis (como o ponto "Deposito Isolado") para tratar exceções de roteamento.
 
+## Screenshots
 
+![Interface Inicial](assets/tela1.png)
 
----
+![Rota Calculada - Detalhes](assets/tela2.png)
 
+![Rota Calculada - Mapa](assets/tela3.png)
 
+## Instalação
 
-##  Sobre o Projeto
+**Linguagem:** C++ (Core), JavaScript (API e Frontend)<br>
+**Framework:** Express (Node.js), React/Vite (Frontend)<br>
 
-O **UrbanRoutingDelivery** é um sistema distribuído de roteamento logístico que calcula a menor distância entre pontos de uma malha urbana (baseada no Distrito Federal). O projeto foi desenvolvido para demonstrar a aplicação prática da Teoria dos Grafos utilizando o **Algoritmo de Dijkstra**.
+**Pré-requisitos:**
+* Compilador C++ (g++) e CMake
+* Node.js e npm
 
+**Comandos de Instalação:**
 
-
-A arquitetura do projeto foi dividida em três camadas distintas para garantir a **separação de responsabilidades (Separation of Concerns)**:
-
-1.  **Core (C++):** Motor matemático de alta performance responsável pela estrutura de dados do grafo e cálculo de rotas.
-
-2.  **API (Node.js):** Camada intermediária de comunicação (`child_process`) que expõe os cálculos matemáticos para o mundo web via JSON.
-
-3.  **Frontend (React/Vite):** Interface gráfica moderna com renderização espacial em SVG para visualização interativa do grafo.
-
-
-
-##  Modelagem do Grafo
-
-A estrutura de dados principal implementada em C++ adota os seguintes preceitos acadêmicos:
-
-
-
-*   **Grafo Não-Direcionado (Undirected):** As conexões (arestas) representam vias de mão dupla entre os locais. A função `addUndirectedEdge()` garante que o custo de ida é igual ao de volta.
-
-*   **Grafo Ponderado (Weighted):** Cada aresta possui um peso numérico correspondente à distância em quilômetros entre os nós. O Algoritmo de Dijkstra foi escolhido especificamente para buscar o menor caminho através do somatório destes pesos.
-
-*   **Grafo Desconexo (Disconnected):** Intencionalmente, a malha possui um vértice de grau zero (`Deposito Isolado`). Isso foi implementado para testar e validar o tratamento de exceções (Edge Cases) do algoritmo quando uma rota é matematicamente inalcançável. A classe `Router` atua como domínio, traduzindo strings nominais para identificadores (IDs) compreendidos pela matriz do grafo.
-
-
-
-##  Como Executar Localmente
-
-
-
-**Pré-requisitos:** `CMake`, `g++`, `Node.js` e `npm`.
-
-
-
-### 1. Compilando o Core em C++
-
-Abra o terminal na pasta raiz do `UrbanRoutingDelivery` e execute:
-
-\`\`\`bash
-
+1. **Compilando o Core em C++** (Na raiz do repositório):
+```bash
 cmake -S . -B build
-
 cmake --build build
 
-\`\`\`
 
-*Isso gerará o executável \`urban_router\` dentro da pasta \`build/\`.*
+## Subindo o Frontend (React) (Em um novo terminal)
 
-
-
-### 2. Rodando a API (Node.js)
-
-Em um terminal, inicie o servidor:
-
-\`\`\`bash
-
-cd api
-
-npm install
-
-npm start
-
-\`\`\`
-
-*O servidor rodará na porta 3000.*
-
-
-
-### 3. Rodando o Frontend (React)
-
-Em um **novo** terminal, inicie a interface:
-
-\`\`\`bash
-
+``bash
 cd frontend
-
 npm install
-
 npm run dev
+`
 
-\`\`\`
+## Uso
 
-*Acesse \`http://localhost:5173\` no seu navegador.*
+1. Após iniciar a API e o Frontend, acesse `http://localhost:5173` no seu navegador.
+2. No menu lateral, você verá os pontos cadastrados na malha urbana.
+3. Digite o nome exato do ponto de **Origem** (ex: `Centro de Distribuicao` - sem acentos) e do ponto de **Destino** (ex: `Lago Sul`).
+4. Clique em **Calcular Rota**. O sistema consultará o binário em C++ e traçará o menor trajeto na interface.
 
+## Outros
 
+**Apresentação do Projeto (Vídeo):**  
+[Assistir no YouTube - Apresentação Módulo 1](https://www.youtube.com/watch?v=t_nHIikhSYg)
 
-##  Apresentação em Vídeo
+**Arquitetura do Sistema:**  
+O projeto foi dividido em três camadas para garantir a Separação de Responsabilidades (Separation of Concerns):
 
-[Insira o link do YouTube aqui após a gravação]
+* **Core (C++)**: Motor matemático de alta performance responsável pelo grafo.
+* **API (Node.js)**: Camada intermediária que expõe o executável C++ via HTTP (`child_process`).
+* **Frontend (React)**: Interface gráfica interativa para o usuário final.
