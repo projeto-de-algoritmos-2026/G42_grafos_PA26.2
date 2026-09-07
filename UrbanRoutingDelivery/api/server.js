@@ -37,4 +37,4 @@ app.get('/api/route', (req, res) => {
     });
 });
 
-app.listen(port);
+app.listen(port, () => console.log(`Servidor rodando na porta ${port}`));
