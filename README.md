@@ -40,7 +40,7 @@ A estrutura de dados principal implementada no núcleo do sistema adota os segui
 
 1. **Compilando o Core em C++** (Na raiz do repositório):
 
-```bash
+
 cmake -S . -B build
 cmake --build build
 
