@@ -39,6 +39,7 @@ A estrutura de dados principal implementada no núcleo do sistema adota os segui
 **Comandos de Instalação:**
 
 1. **Compilando o Core em C++** (Na raiz do repositório):
+
 ```bash
 cmake -S . -B build
 cmake --build build
@@ -46,11 +47,12 @@ cmake --build build
 
 ## Subindo o Frontend (React) (Em um novo terminal)
 
-``bash
+
+
 cd frontend
 npm install
 npm run dev
-`
+
 
 ## Uso
 
@@ -70,3 +72,4 @@ O projeto foi dividido em três camadas para garantir a Separação de Responsab
 * **Core (C++)**: Motor matemático de alta performance responsável pelo grafo.
 * **API (Node.js)**: Camada intermediária que expõe o executável C++ via HTTP (`child_process`).
 * **Frontend (React)**: Interface gráfica interativa para o usuário final.
+
